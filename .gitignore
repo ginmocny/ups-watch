@@ -1,0 +1,6 @@
+.env
+*.env
+!ups-watch.env.example
+__pycache__/
+*.pyc
+/var/

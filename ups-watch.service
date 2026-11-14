@@ -1,0 +1,15 @@
+[Unit]
+Description=UPS watch
+After=network-online.target nut-server.service
+Wants=nut-server.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /usr/local/sbin/ups-watch.py
+Restart=on-failure
+RestartSec=5
+EnvironmentFile=/etc/ups-watch.env
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target

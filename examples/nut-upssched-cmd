@@ -1,0 +1,15 @@
+#!/bin/bash
+logger -t nut-upssched -- "event=$1"
+case "$1" in
+  fsd-onbatt)
+    logger -t nut-upssched -- "1h on battery — requesting FSD"
+    /usr/sbin/upsmon -c fsd
+    ;;
+  fsd-lowbatt)
+    logger -t nut-upssched -- "LOWBATT — requesting FSD"
+    /usr/sbin/upsmon -c fsd
+    ;;
+  *)
+    logger -t nut-upssched -- "ignored $1"
+    ;;
+esac
